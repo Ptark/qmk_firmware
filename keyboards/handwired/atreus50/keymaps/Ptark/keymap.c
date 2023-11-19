@@ -12,9 +12,11 @@ enum layer_names {
     _NEO,
     _SPECIAL,
     _MOVE,
+    _SWITCH,
     _HOTS,
     _GAMING,
     _NUM,
+    _STENO,
     _RESET,
 };
 
@@ -27,46 +29,58 @@ enum layer_names {
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [_NEO] = LAYOUT(
-    TO(_HOTS),   DE_X,     DE_V,     DE_L,     DE_C,     DE_W,      /****/         /****/      DE_K,     DE_H,     DE_G,     DE_F,    DE_Q,  DE_SS,
-    KC_LALT,     DE_U,     DE_I,     DE_A,     DE_E,     DE_O,      /****/         /****/      DE_S,     DE_N,     DE_R,     DE_T,    DE_D,  DE_Y,
-    KC_LSFT,     DE_UDIA,  DE_ODIA,  DE_ADIA,  DE_P,     DE_Z,      /****/         /****/      DE_B,     DE_M,     DE_COMM,  DE_DOT,  DE_J,  KC_ENTER,
-    MO(_RESET),  KC_NO,    KC_NO,    KC_LALT,  KC_LGUI,  KC_SPACE,  MO(_SPECIAL),  MO(_MOVE),  KC_LSFT,  KC_LCTL,  KC_NO,    DE_T,    DE_T,  DE_T
+MO(_SWITCH),  DE_X,     DE_V,     DE_L,     DE_C,     DE_W,      /****/         /****/      DE_K,     DE_H,     DE_G,     DE_F,    DE_Q,  DE_SS,
+KC_LALT,      DE_U,     DE_I,     DE_A,     DE_E,     DE_O,      /****/         /****/      DE_S,     DE_N,     DE_R,     DE_T,    DE_D,  DE_Y,
+KC_LSFT,      DE_UDIA,  DE_ODIA,  DE_ADIA,  DE_P,     DE_Z,      /****/         /****/      DE_B,     DE_M,     DE_COMM,  DE_DOT,  DE_J,  KC_ENTER,
+MO(_RESET),   KC_NO,    KC_NO,    KC_LALT,  KC_LGUI,  KC_SPACE,  MO(_SPECIAL),  MO(_MOVE),  KC_LSFT,  KC_LCTL,  KC_NO,    DE_T,    DE_T,  DE_T
   ),
   [_SPECIAL] = LAYOUT(
-    TO(_GAMING),  KC_NO,    DE_UNDS,  DE_LBRC,  DE_RBRC,  DE_CIRC,   /****/    /****/      DE_EXLM,  DE_LABK,  DE_RABK,  DE_EQL,   DE_AMPR,  KC_NO,
-    KC_LALT,      DE_BSLS,  DE_SLSH,  DE_LCBR,  DE_RCBR,  DE_ASTR,   /****/    /****/      DE_QUES,  DE_LPRN,  DE_RPRN,  DE_MINS,  DE_COLN,  DE_AT,
-    KC_LSFT,      DE_HASH,  DE_DLR,   DE_PIPE,  DE_TILD,  DE_GRV,    /****/    /****/      DE_PLUS,  DE_PERC,  DE_DQUO,  DE_QUOT,  DE_SCLN,  KC_NO,
-    KC_NO,        KC_NO,    KC_NO,    KC_NO,    KC_LGUI,  KC_SPACE,  KC_TRNS,  MO(_MOVE),  KC_LSFT,  KC_LCTL,  KC_NO,    KC_NO,    KC_NO,    KC_NO
+KC_NO,    KC_NO,    DE_UNDS,  DE_LBRC,  DE_RBRC,  DE_CIRC,   /****/    /****/      DE_EXLM,  DE_LABK,  DE_RABK,  DE_EQL,   DE_AMPR,  KC_NO,
+KC_LALT,  DE_BSLS,  DE_SLSH,  DE_LCBR,  DE_RCBR,  DE_ASTR,   /****/    /****/      DE_QUES,  DE_LPRN,  DE_RPRN,  DE_MINS,  DE_COLN,  DE_AT,
+KC_LSFT,  DE_HASH,  DE_DLR,   DE_PIPE,  DE_TILD,  DE_GRV,    /****/    /****/      DE_PLUS,  DE_PERC,  DE_DQUO,  DE_QUOT,  DE_SCLN,  KC_NO,
+KC_NO,    KC_NO,    KC_NO,    KC_NO,    KC_LGUI,  KC_SPACE,  KC_TRNS,  MO(_MOVE),  KC_LSFT,  KC_LCTL,  KC_NO,    KC_NO,    KC_NO,    KC_NO
   ),
   [_MOVE] = LAYOUT(
-    TO(_GAMING),  KC_PGUP,    KC_BSPC,  KC_UP,      KC_DELETE,  KC_PGDN,   /****/  /****/    KC_PSCR,  KC_7,     KC_8,         KC_9,   DE_PLUS,  DE_MINS,
-    KC_LALT,      KC_HOME,    KC_LEFT,  KC_DOWN,    KC_RIGHT,   KC_END,    /****/  /****/    KC_NO,    KC_4,     KC_5,         KC_6,   DE_COMM,  DE_DOT,
-    KC_NO,        KC_ESCAPE,  KC_TAB,   KC_INSERT,  KC_ENTER,   KC_NO,     /****/  /****/    KC_NO,    KC_1,     KC_2,         KC_3,   DE_SCLN,  KC_NO,
-    KC_NO,        KC_NO,      KC_NO,    KC_NO,      KC_LGUI,    KC_SPACE,  KC_0,   KC_TRNS,  KC_LSFT,  KC_LCTL,  TO(_GAMING),  KC_NO,  KC_NO,    KC_NO
+KC_NO,    KC_PGUP,    KC_BSPC,  KC_UP,      KC_DELETE,  KC_PGDN,   /****/  /****/    KC_PSCR,  KC_7,     KC_8,         KC_9,   DE_PLUS,  DE_MINS,
+KC_LALT,  KC_HOME,    KC_LEFT,  KC_DOWN,    KC_RIGHT,   KC_END,    /****/  /****/    KC_NO,    KC_4,     KC_5,         KC_6,   DE_COMM,  DE_DOT,
+KC_NO,    KC_ESCAPE,  KC_TAB,   KC_INSERT,  KC_ENTER,   KC_NO,     /****/  /****/    KC_NO,    KC_1,     KC_2,         KC_3,   DE_SCLN,  KC_NO,
+KC_NO,    KC_NO,      KC_NO,    KC_NO,      KC_LGUI,    KC_SPACE,  KC_0,   KC_TRNS,  KC_LSFT,  KC_LCTL,  TO(_GAMING),  KC_NO,  KC_NO,    KC_NO
+  ),
+  [_SWITCH] = LAYOUT(
+KC_TRNS,  KC_NO,  KC_NO,       KC_NO,        KC_NO,      KC_NO,  /****/  /****/  KC_NO,  KC_NO,  KC_NO,    KC_NO,  KC_NO,  KC_NO,
+KC_NO,    KC_NO,  TO(_STENO),  TO(_GAMING),  TO(_HOTS),  KC_NO,  /****/  /****/  KC_NO,  KC_NO,  KC_NO,    KC_NO,  KC_NO,  KC_NO,
+KC_NO,    KC_NO,  KC_NO,       KC_NO,        KC_NO,      KC_NO,  /****/  /****/  KC_NO,  KC_NO,  KC_NO,    KC_NO,  KC_NO,  KC_NO,
+KC_NO,    KC_NO,  KC_NO,       KC_NO,        KC_NO,      KC_NO,  KC_NO,  KC_NO,  KC_NO,  KC_NO,  QK_BOOT,  KC_NO,  KC_NO,  KC_NO
   ),
   [_HOTS] = LAYOUT(
-    TO(_NEO),   DE_1,   DE_2,   DE_3,   DE_4,     DE_5,     /****/  /****/  KC_NO,  KC_NO,  KC_NO,     KC_NO,  KC_NO,  KC_NO,
-    KC_TAB,     DE_Q,   DE_W,   DE_E,   DE_R,     DE_T,     /****/  /****/  KC_NO,  KC_NO,  KC_NO,     KC_NO,  KC_NO,  KC_NO,
-    KC_LSFT,    DE_A,   DE_Y,   DE_D,   DE_H,     DE_B,     /****/  /****/  DE_V,   KC_NO,  KC_NO,     KC_NO,  KC_NO,  KC_NO,
-    KC_ESCAPE,  KC_NO,  KC_NO,  KC_NO,  KC_LALT,  KC_LALT,  KC_NO,  KC_NO,  KC_NO,  KC_NO,  TO(_NEO),  KC_NO,  KC_NO,  KC_NO
+TO(_NEO),   DE_1,   DE_2,   DE_3,   DE_4,     DE_5,     /****/  /****/  KC_NO,  KC_NO,  KC_NO,     KC_NO,  KC_NO,  KC_NO,
+KC_TAB,     DE_Q,   DE_W,   DE_E,   DE_R,     DE_T,     /****/  /****/  KC_NO,  KC_NO,  KC_NO,     KC_NO,  KC_NO,  KC_NO,
+KC_LSFT,    DE_A,   DE_Y,   DE_D,   DE_H,     DE_B,     /****/  /****/  DE_V,   KC_NO,  KC_NO,     KC_NO,  KC_NO,  KC_NO,
+KC_ESCAPE,  KC_NO,  KC_NO,  KC_NO,  KC_LALT,  KC_LALT,  KC_NO,  KC_NO,  KC_NO,  KC_NO,  TO(_NEO),  KC_NO,  KC_NO,  KC_NO
   ),
   [_GAMING] = LAYOUT(
-    TO(_NEO),   KC_TAB,   DE_Q,   DE_W,     DE_E,     DE_R,      /****/     /****/  DE_T,   DE_Z,   DE_U,      DE_I,     DE_O,    DE_P,
-    KC_ESCAPE,  KC_LSFT,  DE_A,   DE_S,     DE_D,     DE_F,      /****/     /****/  DE_G,   DE_H,   DE_J,      DE_K,     DE_L,    DE_ODIA,
-    KC_NO,      KC_LCTL,  DE_Y,   DE_X,     DE_C,     DE_V,      /****/     /****/  DE_B,   DE_N,   DE_M,      DE_COMM,  DE_DOT,  KC_ENTER,
-    KC_NO,      KC_NO,    KC_NO,  KC_LGUI,  KC_LALT,  KC_SPACE,  MO(_NUM),  KC_NO,  KC_NO,  KC_NO,  TO(_NEO),  KC_NO,    KC_NO,   KC_NO
+TO(_NEO),   KC_TAB,   DE_Q,   DE_W,     DE_E,     DE_R,      /****/     /****/  DE_T,   DE_Z,   DE_U,      DE_I,     DE_O,    DE_P,
+KC_ESCAPE,  KC_LSFT,  DE_A,   DE_S,     DE_D,     DE_F,      /****/     /****/  DE_G,   DE_H,   DE_J,      DE_K,     DE_L,    DE_ODIA,
+KC_NO,      KC_LCTL,  DE_Y,   DE_X,     DE_C,     DE_V,      /****/     /****/  DE_B,   DE_N,   DE_M,      DE_COMM,  DE_DOT,  KC_ENTER,
+KC_NO,      KC_NO,    KC_NO,  KC_LGUI,  KC_LALT,  KC_SPACE,  MO(_NUM),  KC_NO,  KC_NO,  KC_NO,  TO(_NEO),  KC_NO,    KC_NO,   KC_NO
   ),
   [_NUM] = LAYOUT(
-    KC_NO,      KC_TAB,   DE_1,   DE_2,     DE_3,     KC_NO,     /****/    /****/  KC_NO,  KC_NO,  KC_NO,  KC_NO,  KC_NO,  KC_NO,
-    KC_ESCAPE,  DE_0,     DE_4,   DE_5,     DE_6,     KC_NO,     /****/    /****/  KC_NO,  KC_NO,  KC_NO,  KC_NO,  KC_NO,  KC_NO,
-    KC_NO,      KC_LCTL,  DE_7,   DE_8,     DE_9,     KC_NO,     /****/    /****/  KC_NO,  KC_NO,  KC_NO,  KC_NO,  KC_NO,  KC_NO,
-    KC_NO,      KC_NO,    KC_NO,  KC_LGUI,  KC_LALT,  KC_SPACE,  KC_TRNS,  KC_NO,  KC_NO,  KC_NO,  KC_NO,  KC_NO,  KC_NO,  KC_NO
+KC_NO,      KC_TAB,   DE_1,   DE_2,     DE_3,     KC_NO,     /****/    /****/  KC_NO,  KC_NO,  KC_NO,  KC_NO,  KC_NO,  KC_NO,
+KC_ESCAPE,  DE_0,     DE_4,   DE_5,     DE_6,     KC_NO,     /****/    /****/  KC_NO,  KC_NO,  KC_NO,  KC_NO,  KC_NO,  KC_NO,
+KC_NO,      KC_LCTL,  DE_7,   DE_8,     DE_9,     KC_NO,     /****/    /****/  KC_NO,  KC_NO,  KC_NO,  KC_NO,  KC_NO,  KC_NO,
+KC_NO,      KC_NO,    KC_NO,  KC_LGUI,  KC_LALT,  KC_SPACE,  KC_TRNS,  KC_NO,  KC_NO,  KC_NO,  KC_NO,  KC_NO,  KC_NO,  KC_NO
+  ),
+  [_STENO] = LAYOUT(
+TO(_NEO),  DE_Q,   DE_W,   DE_E,   DE_R,   KC_NO,  /****/  /****/  DE_UDIA,  DE_P,     DE_O,   DE_I,   DE_U,   KC_NO,
+KC_NO,     DE_F,   DE_S,   DE_D,   DE_H,   KC_NO,  /****/  /****/  DE_ADIA,  DE_ODIA,  DE_L,   DE_K,   DE_J,   KC_NO,
+KC_NO,     KC_NO,  KC_NO,  KC_NO,  KC_NO,  KC_NO,  /****/  /****/  KC_NO,    KC_NO,    KC_NO,  KC_NO,  KC_NO,  KC_NO,
+KC_NO,     KC_NO,  KC_NO,  KC_NO,  DE_C,   DE_V,   DE_2,   DE_3,   DE_N,     DE_M,     KC_NO,  KC_NO,  KC_NO,  KC_NO
   ),
   [_RESET] = LAYOUT(
-    KC_NO,    KC_NO,  KC_NO,  KC_NO,  KC_NO,  KC_NO,  /****/  /****/  KC_NO,  KC_NO,  KC_NO,    KC_NO,  KC_NO,  KC_NO,
-    KC_NO,    KC_NO,  KC_NO,  KC_NO,  KC_NO,  KC_NO,  /****/  /****/  KC_NO,  KC_NO,  KC_NO,    KC_NO,  KC_NO,  KC_NO,
-    KC_NO,    KC_NO,  KC_NO,  KC_NO,  KC_NO,  KC_NO,  /****/  /****/  KC_NO,  KC_NO,  KC_NO,    KC_NO,  KC_NO,  KC_T,
-    KC_TRNS,  KC_NO,  KC_NO,  KC_NO,  KC_NO,  KC_NO,  KC_NO,  KC_NO,  KC_NO,  KC_NO,  QK_BOOT,  KC_NO,  KC_NO,  KC_NO
+KC_NO,    KC_NO,  KC_NO,  KC_NO,  KC_NO,  KC_NO,  /****/  /****/  KC_NO,  KC_NO,  KC_NO,    KC_NO,  KC_NO,  KC_NO,
+KC_NO,    KC_NO,  KC_NO,  KC_NO,  KC_NO,  KC_NO,  /****/  /****/  KC_NO,  KC_NO,  KC_NO,    KC_NO,  KC_NO,  KC_NO,
+KC_NO,    KC_NO,  KC_NO,  KC_NO,  KC_NO,  KC_NO,  /****/  /****/  KC_NO,  KC_NO,  KC_NO,    KC_NO,  KC_NO,  KC_NO,
+KC_TRNS,  KC_NO,  KC_NO,  KC_NO,  KC_NO,  KC_NO,  KC_NO,  KC_NO,  KC_NO,  KC_NO,  QK_BOOT,  KC_NO,  KC_NO,  KC_NO
   )
 };
 //
